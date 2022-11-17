@@ -16,10 +16,9 @@ class CustomerRepositoryImplTest {
     @DBRider
     @DisplayName("FindByFirstName（firstname から検索）")
     @SpringBootTest
-    class FindByFirstName {
-        @Autowired
-        lateinit var springDataCustomerEntityRepository: SpringDataCustomerEntityRepository
-
+    class FindByFirstName @Autowired constructor(
+        val springDataCustomerEntityRepository: SpringDataCustomerEntityRepository
+    ) {
         @Test
         @DataSet("datasets/yml/given/customer.yml")
         fun `正常系`() {
@@ -50,10 +49,9 @@ class CustomerRepositoryImplTest {
     @DBRider
     @DisplayName("Save(カスタマーを保存)")
     @SpringBootTest
-    class SaveTest {
-        @Autowired
-        lateinit var springDataCustomerEntityRepository: SpringDataCustomerEntityRepository
-
+    class SaveTest @Autowired constructor(
+        val springDataCustomerEntityRepository: SpringDataCustomerEntityRepository
+    ) {
         @Test
         @DataSet("datasets/yml/given/customer.yml")
         @ExpectedDataSet(
